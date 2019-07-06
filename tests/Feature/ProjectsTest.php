@@ -32,6 +32,7 @@ class ProjectsTest extends TestCase
         $data = [
             'name' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
+            'status' => $this->faker->randomElement(Project::$statuses),
         ];
 
         $request = $this->post('/api/projects', $data);
@@ -42,8 +43,22 @@ class ProjectsTest extends TestCase
         $request->assertJsonStructure([
             'data' => [
                 'name',
+                'status',
                 'description',
                 'id',
+            ],
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function cant_create_with_wrong_status()
+    {
+        $project = factory(Project::class)->raw(['status' => $this->faker->word]);
+        $this->post('/api/projects', $project)->assertStatus(422)->assertJsonStructure([
+            'errors' => [
+                'status',
             ],
         ]);
     }

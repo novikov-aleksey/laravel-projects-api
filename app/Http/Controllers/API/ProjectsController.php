@@ -21,7 +21,6 @@ class ProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store()
@@ -29,9 +28,12 @@ class ProjectsController extends Controller
         request()->validate([
             'name' => 'required',
             'description' => 'required',
+            'status' => 'required|in:' . implode(',', array_values(Project::$statuses)),
         ]);
 
-        $project = Project::create(\request(['name', 'description']));
+
+        $project = Project::create(\request(['name', 'description', 'status']));
+
         return response()->json(['data' => $project], 201);
     }
 
