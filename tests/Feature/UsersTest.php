@@ -28,6 +28,22 @@ class UsersTest extends TestCase
     /**
      * @test
      */
+    public function can_view_single_user()
+    {
+        $user = factory(User::class)->create();
+
+        $this->get('/api/users/' . $user->id)->assertStatus(200)->assertJson([
+            'data' => [
+                'id' => $user->id,
+                'email' => $user->email,
+            ],
+        ]);
+
+    }
+
+    /**
+     * @test
+     */
     public function can_register_new_user()
     {
         $this->withoutExceptionHandling();
