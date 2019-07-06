@@ -72,4 +72,53 @@ class ProjectsTest extends TestCase
             ],
         ]);
     }
+
+    /**
+     * @test
+     */
+    public function a_project_can_update()
+    {
+        $project = factory(Project::class)->create();
+
+        $newData = [
+            'name' => $this->faker->sentence,
+            'description' => 'Changed',
+        ];
+
+        $this->put('/api/projects/' . $project->id, $newData)->assertStatus(201);
+        $this->assertDatabaseHas('projects', [
+            'id' => $project->id,
+            'name' => $newData['name'],
+            'description' => $newData['description'],
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_user_can_see_single_project()
+    {
+        $project = factory(Project::class)->create();
+
+        $this->get('/api/projects/' . $project->id)->assertStatus(200)->assertJson([
+            'data' => [
+                'id' => $project->id,
+                'name' => $project->name,
+                'description' => $project->description,
+            ],
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_user_can_delete_project()
+    {
+        $project = factory(Project::class)->create();
+
+        $this->delete('/api/projects/' . $project->id)->assertStatus(200);
+        $this->assertDatabaseMissing('projects', [
+            'id' => $project->id,
+        ]);
+    }
 }
