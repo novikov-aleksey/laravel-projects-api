@@ -1,5 +1,6 @@
 <?php
 
+use App\Project;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -17,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->mediumText('description');
+            $table->enum('status', Project::$statuses)->default(Project::STATUS_PLANNED);
             $table->timestamps();
         });
     }
