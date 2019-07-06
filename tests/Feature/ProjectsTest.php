@@ -11,6 +11,7 @@ class ProjectsTest extends TestCase
 {
 
     use RefreshDatabase, WithFaker;
+
     /**
      * @test
      */
