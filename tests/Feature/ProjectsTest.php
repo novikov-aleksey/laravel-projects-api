@@ -122,4 +122,28 @@ class ProjectsTest extends TestCase
             'id' => $project->id,
         ]);
     }
+
+
+    /**
+     * @test
+     */
+    public function can_change_status_properly()
+    {
+        $project = factory(Project::class)->create();
+        $statuses = [
+            Project::STATUS_ON_HOLD => 'onHoldProject',
+            Project::STATUS_FINISHED => 'finishProject',
+            Project::STATUS_RUNNING => 'runProject',
+            Project::STATUS_PLANNED => 'planProject',
+            Project::STATUS_CANCEL => 'cancelProject',
+        ];
+
+        foreach ($statuses as $status => $method) {
+            $project->{$method}();
+            $this->assertDatabaseHas('projects', [
+                'id' => $project->id,
+                'status' => $status,
+            ]);
+        }
+    }
 }

@@ -9,5 +9,6 @@ $factory->define(Project::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence,
         'description' => $faker->paragraph,
+        'status' => $faker->randomElement(Project::$statuses),
     ];
 });
