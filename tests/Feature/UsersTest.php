@@ -12,6 +12,8 @@ class UsersTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /**
+     * Visitor can see all users
+     *
      * @test
      */
     public function can_view_all_users()
@@ -26,6 +28,8 @@ class UsersTest extends TestCase
     }
 
     /**
+     * Visitor can view a single user
+     *
      * @test
      */
     public function can_view_single_user()
@@ -42,6 +46,8 @@ class UsersTest extends TestCase
     }
 
     /**
+     * Visitor can register a new user
+     *
      * @test
      */
     public function can_register_new_user()
@@ -68,6 +74,8 @@ class UsersTest extends TestCase
     }
 
     /**
+     * Visitor can't create a user without providing email in proper format
+     *
      * @test
      */
     public function an_email_is_required()
@@ -83,6 +91,8 @@ class UsersTest extends TestCase
     }
 
     /**
+     * Visitor can't create a user without providing strong password (min 6 symbols)
+     *
      * @test
      */
     public function password_is_required_and_strong()
@@ -115,6 +125,8 @@ class UsersTest extends TestCase
     }
 
     /**
+     * Visitor can update a user
+     *
      * @test
      */
     public function can_update_user()
@@ -133,6 +145,8 @@ class UsersTest extends TestCase
     }
 
     /**
+     * Visitor can delete a User
+     *
      * @test Delete
      */
     public function can_delete_user()

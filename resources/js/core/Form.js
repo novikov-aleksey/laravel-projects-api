@@ -1,7 +1,14 @@
 import Errors from './Errors';
 
+/**
+ * Form handling component
+ */
 class Form
 {
+    /**
+     *
+     * @param {object} data Form input which you want ot handle via current class
+     */
     constructor(data)
     {
         this.originalData = data;
@@ -13,6 +20,9 @@ class Form
         this.errors = new Errors();
     }
 
+    /**
+     * Reset all input values
+     */
     reset()
     {
         for (let field in this.originalData) {
@@ -20,6 +30,11 @@ class Form
         }
     }
 
+    /**
+     * Get all input values
+     *
+     * @returns {object}
+     */
     getData()
     {
         let data = Object.assign({}, this);
@@ -29,6 +44,15 @@ class Form
 
         return data;
     }
+
+    /**
+     * Send request to providen endpoint
+     *
+     * @param {string} type      Type of request: get, post, put, delete
+     * @param {string} endpoint Request handling endpoint
+     *
+     * @returns {Promise<any>}
+     */
     request(type, endpoint)
     {
         return new Promise((resolve, reject) => {
@@ -44,11 +68,21 @@ class Form
         });
     }
 
+    /**
+     * Event firing after success request
+     *
+     * @param {object} data Response data
+     */
     onSuccess(data)
     {
         this.reset();
     }
 
+    /**
+     * Event firing if request failed
+     *
+     * @param {object} data Response data
+     */
     onFail(data)
     {
         this.errors.store(data.errors);

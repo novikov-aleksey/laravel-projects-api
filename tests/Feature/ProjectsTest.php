@@ -13,6 +13,8 @@ class ProjectsTest extends TestCase
     use RefreshDatabase, WithFaker;
 
     /**
+     * Visitor can see all project
+     *
      * @test
      */
     public function user_can_view_all_projects()
@@ -23,6 +25,8 @@ class ProjectsTest extends TestCase
     }
 
     /**
+     * Visitor can create a new project
+     *
      * @test
      */
     public function can_create_a_project()
@@ -51,6 +55,7 @@ class ProjectsTest extends TestCase
     }
 
     /**
+     * Visitor can't create a project with a wrong status
      * @test
      */
     public function cant_create_with_wrong_status()
@@ -64,6 +69,8 @@ class ProjectsTest extends TestCase
     }
 
     /**
+     * User can't create a project without providing a `name` field
+     *
      * @test
      */
     public function a_project_require_a_name()
@@ -77,6 +84,8 @@ class ProjectsTest extends TestCase
     }
 
     /**
+     * User can't create a project without providing `description`
+     *
      * @test
      */
     public function a_project_require_a_description()
@@ -90,6 +99,8 @@ class ProjectsTest extends TestCase
     }
 
     /**
+     * User cant update project
+     *
      * @test
      */
     public function a_project_can_update()
@@ -110,6 +121,8 @@ class ProjectsTest extends TestCase
     }
 
     /**
+     * User can see single project
+     *
      * @test
      */
     public function a_user_can_see_single_project()
@@ -126,6 +139,7 @@ class ProjectsTest extends TestCase
     }
 
     /**
+     * User can delete a project
      * @test
      */
     public function a_user_can_delete_project()
@@ -140,6 +154,8 @@ class ProjectsTest extends TestCase
 
 
     /**
+     * Use can change status of the project
+     *
      * @test
      */
     public function can_change_status_properly()

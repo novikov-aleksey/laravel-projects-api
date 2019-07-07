@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class ProjectsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all projects in desc order
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,7 +19,7 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create a new project
      *
      * @return \Illuminate\Http\Response
      */
@@ -38,7 +38,7 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show single project by provided ID
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -49,7 +49,7 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update project
      *
      * @param  \Illuminate\Http\Request $request
      * @param \App\Project              $project
@@ -72,7 +72,7 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the project from database
      *
      * @param  int $id
      * @return \Illuminate\Http\Response

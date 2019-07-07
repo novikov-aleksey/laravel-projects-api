@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class UsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all users in desc order
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,17 +19,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Create a new user
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -46,7 +36,7 @@ class UsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show single user
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -54,17 +44,6 @@ class UsersController extends Controller
     public function show(User $user)
     {
         return response()->json(['data' => $user]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

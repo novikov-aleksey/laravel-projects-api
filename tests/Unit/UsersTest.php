@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UsersTest extends TestCase
@@ -12,6 +11,8 @@ class UsersTest extends TestCase
     use  RefreshDatabase;
 
     /**
+     * User class is successfully exist
+     *
      * @test
      */
     public function has_instance()

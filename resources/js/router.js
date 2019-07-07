@@ -1,5 +1,8 @@
 import VueRouter from 'vue-router';
 
+/**
+ * Main front-end routes
+ */
 const routes = [
     {
         path: '/',
