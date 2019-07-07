@@ -15,7 +15,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return response()->json(['data' => Project::all()]);
+        return response()->json(['data' =>  Project::orderBy('id', 'desc')->get()]);
     }
 
     /**
@@ -28,7 +28,7 @@ class ProjectsController extends Controller
         request()->validate([
             'name' => 'required',
             'description' => 'required',
-            'status' => 'required|in:' . implode(',', array_values(Project::$statuses)),
+            'status' => 'in:' . implode(',', array_values(Project::$statuses)),
         ]);
 
 
